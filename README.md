@@ -30,7 +30,7 @@ Using this module in production? [We'd love to hear about it.](https://github.co
 
 ## Installation
 
-`react-bootstrap-date-picker` is compatible with React 0.14.x and 0.15.x.
+`react-bootstrap-date-picker` is compatible with React 15.5.4.
 
 ```bash
 npm install react-bootstrap-date-picker
