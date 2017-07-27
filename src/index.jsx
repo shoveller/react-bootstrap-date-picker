@@ -11,6 +11,14 @@ import Popover from 'react-bootstrap/lib/Popover';
 let instanceCount = 0;
 
 class CalendarHeader extends React.PureComponent {
+	constructor(props) {
+		super(props);
+
+		this.handleClickPrevious = this.handleClickPrevious.bind(this);
+		this.handleClickNext = this.handleClickNext.bind(this);
+		this.displayingMaxMonth = this.displayingMaxMonth.bind(this);
+	}
+
 	displayingMinMonth() {
 		if (!this.props.minDate) return false;
 
@@ -58,6 +66,13 @@ CalendarHeader.displayName = 'DatePickerHeader';
 const daysInMonth = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
 
 class Calendar extends React.PureComponent {
+	constructor(props) {
+		super(props);
+
+		this.handleClick = this.handleClick.bind(this);
+		this.handleClickToday = this.handleClickToday.bind(this);
+	}
+
 	handleClick(day) {
 		const newSelectedDate = this.setTimeToNoon(new Date(this.props.displayDate));
 		newSelectedDate.setDate(day);
@@ -214,6 +229,15 @@ export default class DatePicker extends React.PureComponent {
 		super(props);
 
 		this.state = this.getInitialState();
+		this.clear = this.clear.bind(this);
+		this.handleHide = this.handleHide.bind(this);
+		this.handleKeyDown = this.handleKeyDown.bind(this);
+		this.handleFocus = this.handleFocus.bind(this);
+		this.handleBlur = this.handleBlur.bind(this);
+		this.handleBadInput = this.handleBadInput.bind(this);
+		this.handleInputChange = this.handleInputChange.bind(this);
+		this.onChangeMonth = this.onChangeMonth.bind(this);
+		this.onChangeDate = this.onChangeDate.bind(this);
 	}
 
 	getInitialState() {
