@@ -132,7 +132,7 @@ class Calendar extends React.PureComponent {
 		for (let i = 0; i < 9; i++) {
 			const week = [];
 			for (let j = 0; j <= 6; j++) {
-				const key = v4();
+				const key = new Date().getTime();
 				if (day <= monthLength && (i > 0 || j >= startingDay)) {
 					let className = null;
 					const date = new Date(year, month, day, 12, 0, 0, 0).toISOString();
@@ -140,7 +140,7 @@ class Calendar extends React.PureComponent {
 					const afterMinDate = maxDate && Date.parse(date) > Date.parse(maxDate);
 					if (beforeMinDate || afterMinDate) {
 						week.push(<td
-							key={v4()}
+							key={key}
 							style={{ padding: this.props.cellPadding }}
 							className="text-muted"
 						>
