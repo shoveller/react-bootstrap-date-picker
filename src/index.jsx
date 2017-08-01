@@ -67,13 +67,6 @@ CalendarHeader.displayName = 'DatePickerHeader';
 const daysInMonth = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
 
 class Calendar extends React.PureComponent {
-	constructor(props) {
-		super(props);
-
-		this.handleClick = this.handleClick.bind(this);
-		this.handleClickToday = this.handleClickToday.bind(this);
-	}
-
 	handleClick(day) {
 		const newSelectedDate = this.setTimeToNoon(new Date(this.props.displayDate));
 		newSelectedDate.setDate(day);
@@ -132,7 +125,7 @@ class Calendar extends React.PureComponent {
 		for (let i = 0; i < 9; i++) {
 			const week = [];
 			for (let j = 0; j <= 6; j++) {
-				const key = new Date().getTime();
+				const key = v4();
 				if (day <= monthLength && (i > 0 || j >= startingDay)) {
 					let className = null;
 					const date = new Date(year, month, day, 12, 0, 0, 0).toISOString();
@@ -214,7 +207,7 @@ class Calendar extends React.PureComponent {
 						block
 						bsSize="xsmall"
 						className="u-today-button"
-						onClick={this.handleClickToday}>
+						onClick={this.handleClickToday.bind(this)}>
 						{this.props.todayButtonLabel}
 					</Button>
 				</td>
