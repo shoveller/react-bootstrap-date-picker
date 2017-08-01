@@ -11,7 +11,7 @@
     "picker"
   ],
   "main": "lib/index.js",
-  "version": "5.0.2",
+  "version": "5.0.3",
   "description": "React-Bootstrap based date picker.",
   "directories": {
     "test": "test"
@@ -79,5 +79,8 @@
   "bugs": {
     "url": "https://github.com/shoveller/react-bootstrap-date-picker/issues"
   },
-  "homepage": "https://github.com/shoveller/react-bootstrap-date-picker#readme"
+  "homepage": "https://github.com/shoveller/react-bootstrap-date-picker#readme",
+  "dependencies": {
+    "uuid": "^3.1.0"
+  }
 }
