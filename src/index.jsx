@@ -140,7 +140,7 @@ class Calendar extends React.PureComponent {
 					const afterMinDate = maxDate && Date.parse(date) > Date.parse(maxDate);
 					if (beforeMinDate || afterMinDate) {
 						week.push(<td
-							key={j}
+							key={v4()}
 							style={{ padding: this.props.cellPadding }}
 							className="text-muted"
 						>
