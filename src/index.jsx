@@ -7,6 +7,7 @@ import FormControl from 'react-bootstrap/lib/FormControl';
 import InputGroup from 'react-bootstrap/lib/InputGroup';
 import Overlay from 'react-bootstrap/lib/Overlay';
 import Popover from 'react-bootstrap/lib/Popover';
+import { v4 } from 'uuid';
 
 let instanceCount = 0;
 
@@ -129,8 +130,10 @@ class Calendar extends React.PureComponent {
 		const weeks = [];
 		let day = 1;
 		for (let i = 0; i < 9; i++) {
+			const iKey = v4();
 			const week = [];
 			for (let j = 0; j <= 6; j++) {
+				const key = v4();
 				if (day <= monthLength && (i > 0 || j >= startingDay)) {
 					let className = null;
 					const date = new Date(year, month, day, 12, 0, 0, 0).toISOString();
@@ -138,7 +141,7 @@ class Calendar extends React.PureComponent {
 					const afterMinDate = maxDate && Date.parse(date) > Date.parse(maxDate);
 					if (beforeMinDate || afterMinDate) {
 						week.push(<td
-							key={j}
+							key={key}
 							style={{ padding: this.props.cellPadding }}
 							className="text-muted"
 						>
@@ -150,7 +153,7 @@ class Calendar extends React.PureComponent {
 						className = 'text-primary';
 					}
 					week.push(<td
-						key={j}
+						key={key}
 						onClick={this.handleClick.bind(this, day)}
 						style={{ cursor: 'pointer', padding: this.props.cellPadding, borderRadius: this.props.roundedCorners ? 5 : 0 }}
 						className={className}
@@ -159,7 +162,7 @@ class Calendar extends React.PureComponent {
 					</td>);
 					day++;
 				} else {
-					week.push(<td key={j} />);
+					week.push(<td key={key} />);
 				}
 			}
 
@@ -167,7 +170,7 @@ class Calendar extends React.PureComponent {
 			if (showWeeks){
 				const weekNum = this.getWeekNumber(new Date(year, month,  day - 1, 12, 0, 0, 0));
 				week.unshift(<td
-					key={7}
+					key={v4()}
 					style={{padding: this.props.cellPadding, fontSize: '0.8em', color: 'darkgrey'}}
 					className="text-muted"
 				>
@@ -176,7 +179,7 @@ class Calendar extends React.PureComponent {
 
 			}
 
-			weeks.push(<tr key={i}>{week}</tr>);
+			weeks.push(<tr key={iKey}>{week}</tr>);
 			if (day > monthLength) {
 				break;
 			}
@@ -194,7 +197,7 @@ class Calendar extends React.PureComponent {
 				{weekColumn}
 				{this.props.dayLabels.map((label, index)=>{
 					return <td
-						key={index}
+						key={v4()}
 						className="text-muted"
 						style={{padding: this.props.cellPadding}}>
 						<small>{label}</small>
