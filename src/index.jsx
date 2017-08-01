@@ -179,7 +179,7 @@ class Calendar extends React.PureComponent {
 
 			}
 
-			weeks.push(<tr key={iKey}>{week}</tr>);
+			weeks.push(<tr key={i}>{week}</tr>);
 			if (day > monthLength) {
 				break;
 			}
